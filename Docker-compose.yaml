@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    platform: linux/x86_64 
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_volume:/var/lib/mysql
+      - ./initdb.d:/docker-entrypoint-initdb.d
+    env_file: ./.env
+    command: mysqld --innodb_use_native_aio=0
+  
+  python:
+    build:
+      context: .
+      dockerfile: ./app/dockerfile
+    container_name: python
+    depends_on:
+      - mysql
+    volumes:
+      - ./app:/app
+    ports:
+      - 8000:8000
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+
+volumes:
+  db_volume:
