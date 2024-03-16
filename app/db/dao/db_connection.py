@@ -19,7 +19,7 @@ DB_NAME = os.environ("DB_NAME")
 class DbConnection:
     
     def __init__(self) -> None:
-        self._session = self.db_connection()
+        self.session = self.db_connection()
 
     def db_connection(self) -> sessionmaker:
         DATABASE_URL = f"{DATABASE}://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
