@@ -16,7 +16,7 @@ services:
   python:
     build:
       context: .
-      dockerfile: ./app/dockerfile
+      dockerfile: ./server/dockerfile
     container_name: python
     depends_on:
       - mysql
@@ -25,6 +25,14 @@ services:
     ports:
       - 8000:8000
     command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+  client:
+    build:
+      context: .
+      dockerfile: ./client/dockerfile
+    container_name: client
+    ports:
+      - "8080:80"
 
 
 volumes:
