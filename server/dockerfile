@@ -2,7 +2,7 @@ FROM python:3.10-slim
 
 ARG project_dir=/app/
 
-COPY ./app/ $project_dir
+COPY ./server/ $project_dir
 
 WORKDIR $project_dir
 

@@ -1,13 +1,15 @@
+import sys
+import os
 from fastapi import APIRouter
 from starlette.requests import Request
-from ..bussiness.user_service import UserService
 import json
+from ..business.user_service import UserService
 
 router = APIRouter()
 user_service = UserService()
 
 #ユーザー登録エンドポイント
-@router.post("register_user")
+@router.post("register")
 async def register_user(request: Request):
     user = json.loads(request)
     username = user['user_name']

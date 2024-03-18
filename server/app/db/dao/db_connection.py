@@ -4,16 +4,16 @@ from dotenv import load_dotenv
 from os.path import join, dirname
 import os
 
-dotenv_path = join(dirname(dirname(__file__), '.env'))
+dotenv_path = join(dirname(dirname(dirname(__file__))), '.env')
 load_dotenv(dotenv_path)
 
 # MySQLへの接続情報
-DATABASE = os.environ("DATABASE")
-USER = os.environ("USER")
-PASSWORD = os.environ("PASSWORD")
-HOST = os.environ("HOST")
-PORT = os.environ("PORT")
-DB_NAME = os.environ("DB_NAME")
+DATABASE = os.environ.get("DATABASE")
+USER = os.environ.get("USER")
+PASSWORD = os.environ.get("PASSWORD")
+HOST = os.environ.get("HOST")
+PORT = os.environ.get("PORT")
+DB_NAME = os.environ.get("DB_NAME")
 
 
 class DbConnection:
