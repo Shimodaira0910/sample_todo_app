@@ -1,10 +1,9 @@
 FROM python:3.10-slim
 
-ARG project_dir=/app/
+ARG project_dir=/server/
 
-COPY ./server/ $project_dir
+COPY ./server $project_dir
 
 WORKDIR $project_dir
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
