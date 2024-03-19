@@ -10,7 +10,7 @@ services:
     volumes:
       - db_volume:/var/lib/mysql
       - ./initdb.d:/docker-entrypoint-initdb.d
-    env_file: ./.env
+    env_file: ./.docker-compose.env
     command: mysqld --innodb_use_native_aio=0
   
   python:
@@ -20,8 +20,6 @@ services:
     container_name: python
     depends_on:
       - mysql
-    volumes:
-      - ./app:/app
     ports:
       - 8000:8000
     command: uvicorn main:app --reload --host 0.0.0.0 --port 8000

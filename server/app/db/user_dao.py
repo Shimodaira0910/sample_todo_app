@@ -35,6 +35,6 @@ class UserDao:
             self.session.commit()
             return True 
         except SQLAlchemyError as e:
-            print(f'ユーザー作成時、エラーが発生しました。:{e}')
+            print(f'ユーザー削除時、エラーが発生しました。:{e}')
             return False
             

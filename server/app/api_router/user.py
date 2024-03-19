@@ -9,9 +9,9 @@ router = APIRouter()
 user_service = UserService()
 
 #ユーザー登録エンドポイント
-@router.post("register")
-async def register_user(request: Request):
-    user = json.loads(request)
+@router.post("/register")
+async def register_user(request: Request): 
+    user = await request.json()
     username = user['user_name']
     password = user['password']
     response = user_service.register_user(username, password)

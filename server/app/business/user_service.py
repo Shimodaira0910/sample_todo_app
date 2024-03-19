@@ -1,6 +1,6 @@
 #from .db.dao.user_dao import UserDao
 #from ..db.dao.user_dao import UserDao
-from ..db.dao.user_dao import UserDao
+from ..db.user_dao import UserDao
 
 
 class UserService:
