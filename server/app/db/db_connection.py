@@ -25,6 +25,12 @@ class DbConnection:
     def db_connection(self) -> sessionmaker:
         DATABASE_URL = self._DB_URL
         engine = create_engine(DATABASE_URL)
-        SessionClass = sessionmaker(bind=engine)
+        
+        SessionClass = sessionmaker(
+            bind=engine,
+            autoflush=False,
+            autocommit=False
+            )
+        
         session = SessionClass()
         return session
